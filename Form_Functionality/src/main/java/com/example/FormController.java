@@ -1,7 +1,9 @@
 package com.example;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +35,25 @@ public class FormController {
         ModelAndView m = new ModelAndView("addappointment","command",patient);
 //        m.addObject("msg",String.format("Appointment of %s is Booked.\n We will contact on %d.",vars.get("patientName"),Long.parseLong(vars.get("patientContact"))));
         m.addObject("msg","Appointment Register successfull.");
+        return m;
+    }
+
+    @RequestMapping("/form")
+    public ModelAndView form()
+    {
+        Customer customer = new Customer();
+//        customer.
+        return new ModelAndView("form","customer",customer);
+    }
+
+    @RequestMapping("/submit")
+    public ModelAndView submit(@Valid @ModelAttribute Customer customer, BindingResult bindingResult, Model model)
+    {
+        if(bindingResult.hasErrors())
+        {
+            return new ModelAndView("form","customer",customer);
+        }
+        ModelAndView m = new ModelAndView("submit");
         return m;
     }
 }

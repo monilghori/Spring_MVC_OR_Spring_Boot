@@ -1,9 +1,12 @@
 package com.example;
 
+import java.util.Date;
+
 public class Patient {
 
     private String patientName;
     private Long patientContact;
+    private Date date;
 
     public String getPatientName() {
         return patientName;
