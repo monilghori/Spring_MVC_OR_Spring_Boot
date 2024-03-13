@@ -10,8 +10,6 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         Configuration config  = new Configuration();
@@ -23,7 +21,7 @@ public class Main {
         try (sessionFactory) {
             StudentDAO studentDAO = new StudentDAOImpl(sessionFactory);
             Student s = new Student();
-            s.setName("Monil");
+            s.setName("kevin");
 
             studentDAO.saveStudent(s);
 
@@ -33,7 +31,7 @@ public class Main {
             Student studentToUpdate = studentDAO.getStudentById(1);
             System.out.println("Updating student " + studentToUpdate);
             if (studentToUpdate != null) {
-                studentToUpdate.setName("Monil Ghori");
+                studentToUpdate.setName("Kevin sangani");
                 studentDAO.updateStudent(studentToUpdate);
             }
 
